@@ -9,7 +9,7 @@
  * @author  	Parse19
  */ 
 class Routes_m extends MY_Model {
-    
+
     /**
      * Get routes
      *

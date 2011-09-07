@@ -43,6 +43,12 @@ class Admin extends Admin_Controller
 	{
 		// Get our routes
 		$this->data->routes = $this->routes_m->get_routes('routes');
+
+		$this->data->pagination = create_pagination(
+										'admin/routes',
+										$this->db->count_all('routes'),
+										$this->settings->item('records_per_page'),
+										3);
 		
 		$this->template->build('admin/list_routes', $this->data);
 	}
@@ -60,7 +66,7 @@ class Admin extends Admin_Controller
 		
 		else:
 		
-			$this->session->set_flashdata('success', 'Custom routes synced successfully');
+			$this->session->set_flashdata('success', 'Custom routes synced successf');
 		
 		endif;
 		
