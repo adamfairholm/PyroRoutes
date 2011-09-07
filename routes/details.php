@@ -47,6 +47,7 @@ class Module_Routes extends Module {
 		$sql = "
             CREATE TABLE IF NOT EXISTS `{$this->db_pre}routes` (
                 `id` int(11) NOT NULL AUTO_INCREMENT,
+                `name` varchar(100) NOT NULL,
                 `route_key` varchar(200) NOT NULL,
                 `route_value` varchar(200) NOT NULL,
                 `notes` text,
