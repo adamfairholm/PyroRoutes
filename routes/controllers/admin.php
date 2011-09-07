@@ -25,6 +25,8 @@ class Admin extends Admin_Controller
 		parent::__construct();
 		
 		$this->load->language('pyroroutes');
+		
+		$this->load->model('routes_m');
 
 		$this->template->append_metadata( css('pyroroutes.css', 'routes') )
 							->set_partial('shortcuts', 'admin/shortcuts');
@@ -39,9 +41,31 @@ class Admin extends Admin_Controller
 	 */
 	public function index()
 	{
+		// Get our routes
+		$this->data->routes = $this->routes_m->get_routes('routes');
 		
-
 		$this->template->build('admin/list_routes', $this->data);
+	}
+	
+	public function new_route()
+	{
+		$this->template->build('admin/list_routes', $this->data);
+	}
+	
+	public function sync_routes()
+	{
+		if(!$this->routes_m->sync_routes()):
+		
+			$this->session->set_flashdata('error', 'There was an error in syncing your routes to file');
+		
+		else:
+		
+			$this->session->set_flashdata('success', 'Custom routes synced successfully');
+		
+		endif;
+		
+		// Redirect
+		redirect('admin/routes');
 	}
 
 }
