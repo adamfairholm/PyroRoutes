@@ -50,7 +50,6 @@ class Module_Routes extends Module {
                 `name` varchar(100) NOT NULL,
                 `route_key` varchar(200) NOT NULL,
                 `route_value` varchar(200) NOT NULL,
-                `notes` text,
                 `when_added` datetime DEFAULT NULL,
                 `last_updated` datetime DEFAULT NULL,
                 `added_by` int(11) DEFAULT NULL,
