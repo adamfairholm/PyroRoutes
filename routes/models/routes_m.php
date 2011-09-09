@@ -10,6 +10,15 @@
  */ 
 class Routes_m extends MY_Model {
 
+	/* Fields */
+	public $fields = array(
+		array('field'=>'name', 'label'=>'Route Name', 'rules'=>'required|max_length[100]'),
+		array('field'=>'route_key', 'label'=>'Route Name', 'rules'=>'required|max_length[200]'),
+		array('field'=>'route_value', 'label'=>'Route Name', 'rules'=>'required|max_length[200]')
+	);
+
+    // --------------------------------------------------------------------------
+
     /**
      * Get routes
      *
@@ -31,6 +40,24 @@ class Routes_m extends MY_Model {
 	}
 
     // --------------------------------------------------------------------------
+
+    /**
+     * Get a single route by ID
+     *
+     * @access	public
+     * @param	int route_id
+     * @return	obj
+     */
+    public function get_route($route_id)
+	{
+		$obj = $this->db->limit(1)->where('id', $route_id)->get('routes');
+    	
+    	if($obj->num_rows() == 0) return null;
+    	
+    	return $obj->row();
+	}
+
+    // --------------------------------------------------------------------------
     
     /**
      * Add a route into the db
@@ -44,12 +71,48 @@ class Routes_m extends MY_Model {
     		'name'			=> $this->input->post('name'),
     		'route_key'		=> $this->input->post('route_key'),
     		'route_value'	=> $this->input->post('route_value'),
-    		'notes'			=> $this->input->post('notes'),
     		'when_added'	=> date('Y-m-d H:i:s'),
     		'added_by'		=> $this->user->id
     	);
     	
     	return $this->db->insert('routes', $insert_data);
+    }
+    
+    // --------------------------------------------------------------------------
+    
+    /**
+     * Update a route in the db
+     *
+     * @access	public
+     * @param	int route_id
+     * @return 	bool
+     */
+    public function update_route($route_id)
+    {
+    	$update_data = array(
+    		'name'			=> $this->input->post('name'),
+    		'route_key'		=> $this->input->post('route_key'),
+    		'route_value'	=> $this->input->post('route_value'),
+    		'last_updated'	=> date('Y-m-d H:i:s')
+    	);
+    	
+    	$this->db->where('id', $route_id);
+    	return $this->db->update('routes', $update_data);
+    }
+
+    // --------------------------------------------------------------------------
+    
+    /**
+     * Update a route in the db
+     *
+     * @access	public
+     * @param	int route_id
+     * @return 	bool
+     */
+    public function delete_route($route_id)
+    {
+    	$this->db->where('id', $route_id);
+    	return $this->db->delete('routes');
     }
 
     // --------------------------------------------------------------------------
@@ -102,7 +165,7 @@ class Routes_m extends MY_Model {
 		
 		// Get the routes
 		$routes = $this->get_routes();
-		
+				
 		if($routes):
 				
 			$file_data .= "\n/* Custom Routes from PyroRoutes */\n\n";
@@ -117,6 +180,9 @@ class Routes_m extends MY_Model {
 		
 		$file_data .= "\n".'/* End of file routes.php */';
 		
+		// Clear the file first
+		file_put_contents($route_file, '');
+			
 		// Write the file
 		return write_file($route_file, $file_data, 'r+');
 	}

@@ -1,14 +1,25 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-$lang['pyroroutes.routes'] 				= "Routes";
-$lang['pyroroutes.new_route'] 			= "New Route";
-$lang['pyroroutes.custom_routes'] 		= "Custom Routes";
-$lang['pyroroutes.no_routes'] 			= "You currently have no custom routes. You can add one ";
-$lang['pyroroutes.here'] 				= "here";
-$lang['pyroroutes.sync_routes'] 		= "Sync Routes";
+$lang['pyroroutes.routes'] 					= "Routes";
+$lang['pyroroutes.new_route'] 				= "New Route";
+$lang['pyroroutes.edit_route'] 				= "Edit Route";
+$lang['pyroroutes.custom_routes'] 			= "Custom Routes";
+$lang['pyroroutes.no_routes'] 				= "You currently have no custom routes. You can add one ";
+$lang['pyroroutes.here'] 					= "here";
+$lang['pyroroutes.sync_routes'] 			= "Sync Routes";
 
-$lang['pyroroutes.route_name'] 			= "Route Name";
-$lang['pyroroutes.route_key'] 			= "Route Key";
-$lang['pyroroutes.route_value'] 		= "Route Value";
+$lang['pyroroutes.route_name'] 				= "Route Name";
+$lang['pyroroutes.instr.route_name'] 		= "Choose a descriptive name for your route.";
+$lang['pyroroutes.route_key'] 				= "Route Key";
+$lang['pyroroutes.instr.route_key'] 		= "Variable segments: (:any), (:num)";
+$lang['pyroroutes.route_value'] 			= "Route Value";
+$lang['pyroroutes.instr.route_value'] 		= "Ex: page/view/sample_page";
+
+$lang['pyroroutes.add_route_error'] 		= "There was an error adding your route.";
+$lang['pyroroutes.add_route_success'] 		= "Route added successfully.";
+$lang['pyroroutes.edit_route_error'] 		= "There was an error updating your route.";
+$lang['pyroroutes.edit_route_success'] 		= "Route updated successfully.";
+$lang['pyroroutes.delete_route_error'] 		= "There was an error deleteing your route.";
+$lang['pyroroutes.delete_route_success'] 	= "Route deleted successfully.";
 
 /* End of file pyroroutes_lang.php */
