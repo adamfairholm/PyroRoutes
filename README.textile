@@ -1,0 +1,15 @@
+h1. PyroRoutes
+
+PyroRoutes is a very simple module for PyroCMS that allows you to create and manage custom routes. It does this by directly editing the routes.php file, so there is no database calls checking for routes when you load up a PyroCMS page.
+
+h2. Installation
+
+Drop the pyroroutes folder into the shared_addons/modules or default/modules folders in the addons folder. Activate via the Add-ons section of the PyroCMS back end.
+
+Make sure your routes.php permissions are set to 666 so the server can write the file.
+
+h2. Usage
+
+Create a new route by proving a name, the route key, and the URI to route it to. You can use (:any) and (:num) in your route key to denote a segment containing any string and any number, respectively.
+
+Saving, editing, or deleting a route will sync the routes file. You can also click "Sync Routes" to sync the file again.
