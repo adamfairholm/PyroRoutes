@@ -86,7 +86,7 @@ class Admin extends Admin_Controller
 			
 				// Sync since we have a new route
 				if(!$this->routes_m->sync_routes())
-					$this->session->set_flashdata('error', 'There was an error in syncing your routes to file');
+					$this->session->set_flashdata('error', lang('pyroroutes.sync_error'));
 			
 				$this->session->set_flashdata('success', lang('pyroroutes.add_route_success'));
 				
@@ -135,7 +135,7 @@ class Admin extends Admin_Controller
 			
 				// Sync since we have a new route
 				if(!$this->routes_m->sync_routes())
-					$this->session->set_flashdata('error', 'There was an error in syncing your routes to file');
+					$this->session->set_flashdata('error', lang('pyroroutes.sync_error'));
 			
 				$this->session->set_flashdata('success', lang('pyroroutes.edit_route_success'));
 				
@@ -172,7 +172,7 @@ class Admin extends Admin_Controller
 		
 			// Sync since we have deleted a route
 			if(!$this->routes_m->sync_routes())
-				$this->session->set_flashdata('error', 'There was an error in syncing your routes to file');
+				$this->session->set_flashdata('error', lang('pyroroutes.sync_error'));
 		
 			$this->session->set_flashdata('success', lang('pyroroutes.delete_route_success'));
 			
@@ -193,11 +193,11 @@ class Admin extends Admin_Controller
 	{
 		if(!$this->routes_m->sync_routes()):
 		
-			$this->session->set_flashdata('error', 'There was an error in syncing your routes to file');
+			$this->session->set_flashdata('error', lang('pyroroutes.sync_error'));
 		
 		else:
 		
-			$this->session->set_flashdata('success', 'Custom routes synced successf');
+			$this->session->set_flashdata('success', lang('pyroroutes.sync_success'));
 		
 		endif;
 		
