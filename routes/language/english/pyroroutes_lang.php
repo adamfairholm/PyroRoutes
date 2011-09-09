@@ -4,8 +4,7 @@ $lang['pyroroutes.routes'] 					= "Routes";
 $lang['pyroroutes.new_route'] 				= "New Route";
 $lang['pyroroutes.edit_route'] 				= "Edit Route";
 $lang['pyroroutes.custom_routes'] 			= "Custom Routes";
-$lang['pyroroutes.no_routes'] 				= "You currently have no custom routes. You can add one ";
-$lang['pyroroutes.here'] 					= "here";
+$lang['pyroroutes.no_routes'] 				= "There are currently no custom routes.";
 $lang['pyroroutes.sync_routes'] 			= "Sync Routes";
 
 $lang['pyroroutes.route_name'] 				= "Route Name";

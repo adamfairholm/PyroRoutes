@@ -1,6 +1,6 @@
-<h3><?php echo lang('pyroroutes.custom_routes'); ?></h3>
-
 <?php if (!empty($routes)): ?>
+
+<h3><?php echo lang('pyroroutes.custom_routes'); ?></h3>
 
 <table class="table-list">
 	<thead>
@@ -29,7 +29,6 @@
 <?php echo $pagination['links']; ?>
 
 <?php else: ?>
-	<section class="box"> 
-    <p><?php echo lang('pyroroutes.no_routes');?> <?php echo anchor('admin/routes/new_route', lang('pyroroutes.here')); ?>.</p>
-    </div>
+<div class="blank-slate"> 
+		<h2><?php echo lang('pyroroutes.no_routes');?></h2> </div>
 <?php endif;?>
