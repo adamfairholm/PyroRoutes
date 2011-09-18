@@ -54,5 +54,3 @@ $route['news/(:num)/(:num)/(:any)']		= 'blog/view/$3';
 $route['news/page(/:num)?']				= 'blog/index$1';
 $route['news/rss/all.rss']				= 'blog/rss/index';
 $route['news/rss/(:any).rss']			= 'blog/rss/category/$1';
-
-$route['products/product/(:any)'] 		= 'pages/view/product-page';
