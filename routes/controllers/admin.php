@@ -28,8 +28,7 @@ class Admin extends Admin_Controller
 		
 		$this->load->model('routes_m');
 
-		$this->template->append_metadata( css('pyroroutes.css', 'routes') )
-							->set_partial('shortcuts', 'admin/shortcuts');
+		$this->template->set_partial('shortcuts', 'admin/shortcuts');
 	}
 
 	// --------------------------------------------------------------------------	

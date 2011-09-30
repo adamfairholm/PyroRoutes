@@ -1,6 +1,10 @@
-<?php if (!empty($routes)): ?>
+<section class="title">
+	<h4><?php echo lang('pyroroutes.custom_routes'); ?></h4>
+</section>
 
-<h3><?php echo lang('pyroroutes.custom_routes'); ?></h3>
+<section class="item">
+
+<?php if (!empty($routes)): ?>
 
 <table class="table-list">
 	<thead>
@@ -29,6 +33,7 @@
 <?php echo $pagination['links']; ?>
 
 <?php else: ?>
-<div class="blank-slate"> 
-		<h2><?php echo lang('pyroroutes.no_routes');?></h2> </div>
+	<p><?php echo lang('pyroroutes.no_routes');?></h2></p>
 <?php endif;?>
+
+</section>

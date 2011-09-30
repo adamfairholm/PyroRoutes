@@ -31,9 +31,8 @@ class Routes_m extends MY_Model {
 	{
 		$this->db->order_by('name', 'asc');
 	
-		if($limit) $this->db->limit($limit);
-		if($offset) $this->db->offset($offset);
-		     
+		//$this->db->limit($limit);
+
 		$obj = $this->db->get('routes');
     	
     	return $obj->result();
@@ -72,7 +71,7 @@ class Routes_m extends MY_Model {
     		'route_key'		=> $this->input->post('route_key'),
     		'route_value'	=> $this->input->post('route_value'),
     		'when_added'	=> date('Y-m-d H:i:s'),
-    		'added_by'		=> $this->user->id
+    		'added_by'		=> $this->current_user->id
     	);
     	
     	return $this->db->insert('routes', $insert_data);
