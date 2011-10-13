@@ -27,8 +27,6 @@ class Admin extends Admin_Controller
 		$this->load->language('pyroroutes');
 		
 		$this->load->model('routes_m');
-
-		$this->template->set_partial('shortcuts', 'admin/shortcuts');
 	}
 
 	// --------------------------------------------------------------------------	

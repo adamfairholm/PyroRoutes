@@ -36,7 +36,21 @@ class Module_Routes extends Module {
 		    'frontend' => false,
 			'backend' => true,
 			'menu' => 'utilities',
-			'author' => 'Parse19'
+			'author' => 'Parse19',
+		    'shortcuts' => array(
+				array(
+				    'name' => 'pyroroutes.routes',
+				    'uri' => 'admin/routes',
+				),
+				array(
+				    'name' => 'pyroroutes.new_route',
+				    'uri' => 'admin/routes/new_route',
+				),
+				array(
+				    'name' => 'pyroroutes.sync_routes',
+				    'uri' => 'admin/routes/sync_routes',
+				)
+		    )
 		);
 	}
 
