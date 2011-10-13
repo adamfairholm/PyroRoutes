@@ -37,9 +37,8 @@
 
 <div class="float-right buttons">
 
-	<button type="submit" name="btnAction" value="save" class="button"><span><?php echo lang('buttons.save'); ?></span></button>	
+	<?php $this->load->view('admin/partials/buttons', array('buttons' => array('save', 'cancel'))); ?>
 	
-	<a href="<?php echo site_url('admin/routes'); ?>" class="button cancel"><?php echo lang('buttons.cancel'); ?></a>	
 </div><!--.float-right-->
 
 </form>

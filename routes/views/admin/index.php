@@ -21,7 +21,7 @@
 			<td><strong><?php echo $route->name; ?></strong></td>
 			<td><?php echo $route->route_key; ?></td>
 			<td><?php echo $route->route_value; ?></td>
-			<td class="align-center buttons buttons-small"> 
+			<td class="actions"> 
 				<a href="<?php echo site_url('admin/routes/edit_route/'.$route->id);?>" class="button edit">Edit</a>
 				<a href="<?php echo site_url('admin/routes/delete_route/'.$route->id);?>" class="confirm button delete">Delete</a>
 			</td> 

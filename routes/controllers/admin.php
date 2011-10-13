@@ -48,7 +48,7 @@ class Admin extends Admin_Controller
 										$this->settings->item('records_per_page'),
 										3);
 		
-		$this->template->build('admin/list_routes', $this->data);
+		$this->template->build('admin/index', $this->data);
 	}
 
 	// --------------------------------------------------------------------------	
@@ -93,7 +93,7 @@ class Admin extends Admin_Controller
 		
 		endif;
 		
-		$this->template->build('admin/route_form', $this->data);
+		$this->template->build('admin/form', $this->data);
 	}
 
 	// --------------------------------------------------------------------------	
@@ -142,7 +142,7 @@ class Admin extends Admin_Controller
 		
 		endif;
 		
-		$this->template->build('admin/route_form', $this->data);
+		$this->template->build('admin/form', $this->data);
 	}
 
 	// --------------------------------------------------------------------------	
