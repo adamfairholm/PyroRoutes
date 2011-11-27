@@ -10,30 +10,37 @@
 
 <?php echo form_open(uri_string(), 'class="crud"'); ?>
 
+<div class="form_inputs">
+
 <ul>
 
 	<li>
-		<label for="name"><?php echo lang('pyroroutes.route_name');?></label>
-		<?php echo form_input('name', set_value('name', $route->name), 'maxlength="100"'); ?>
-		<span class="required-icon tooltip"><?php echo lang('required_label');?></span>
-		<p><em><?php echo lang('pyroroutes.instr.route_name');?></em></p>
+		<label for="name">
+			<?php echo lang('pyroroutes.route_name');?> <span>*</span>
+			<small><?php echo lang('pyroroutes.instr.route_name');?></small>
+		</label>
+		<div class="input"><?php echo form_input('name', set_value('name', $route->name), 'maxlength="100"'); ?></div>
 	</li>
 
 	<li class="even">
-		<label for="route_key"><?php echo lang('pyroroutes.route_key');?></label>
-		<?php echo form_input('route_key', set_value('route_key', $route->route_key), 'maxlength="200"'); ?>
-		<span class="required-icon tooltip"><?php echo lang('required_label');?></span>
-		<p><em><?php echo lang('pyroroutes.instr.route_key');?></em></p>
+		<label for="route_key">
+			<?php echo lang('pyroroutes.route_key');?> <span>*</span>
+			<small><?php echo lang('pyroroutes.instr.route_key');?></small>
+		</label>
+		<div class="input"><?php echo form_input('route_key', set_value('route_key', $route->route_key), 'maxlength="200"'); ?></div>
 	</li>
 
 	<li>
-		<label for="route_key"><?php echo lang('pyroroutes.route_value');?></label>
-		<?php echo form_input('route_value', set_value('route_value', $route->route_value), 'maxlength="200"'); ?>
-		<span class="required-icon tooltip"><?php echo lang('required_label');?></span>
-		<p><em><?php echo lang('pyroroutes.instr.route_value');?></em></p>
+		<label for="route_key">
+			<?php echo lang('pyroroutes.route_value');?> <span>*</span>
+			<small><?php echo lang('pyroroutes.instr.route_value');?></small>
+		</label>
+		<div class="input"><?php echo form_input('route_value', set_value('route_value', $route->route_value), 'maxlength="200"'); ?></div>
 	</li>
 
 </ul>
+
+</div><!--.form_inputs-->
 
 <div class="float-right buttons">
 
