@@ -45,7 +45,7 @@ class Admin extends Admin_Controller
 		$this->data->pagination = create_pagination(
 										'admin/routes',
 										$this->db->count_all('routes'),
-										$this->settings->item('records_per_page'),
+										Settings::get('records_per_page'),
 										3);
 		
 		$this->template->build('admin/index', $this->data);
