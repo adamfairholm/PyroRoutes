@@ -28,10 +28,12 @@ class Module_Routes extends Module {
 	{
 		return array(
 		    'name' => array(
-		        'en' => 'Routes'
+		        'en' => 'Routes', 
+		        'fr' => 'Routes'
 		    ),
 		    'description' => array(
-		        'en' => 'Manage custom routes.'
+		        'en' => 'Manage custom routes.', 
+		        'fr' => 'Gèrez vos routes personnalisées.'
 		    ),
 		    'frontend' => false,
 			'backend' => true,
