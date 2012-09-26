@@ -3,10 +3,8 @@
 /**
  * PyroRoutes Routes Model
  *
- * @package  	PyroCMS
- * @subpackage  PyroRoutes
- * @category  	Models
- * @author  	Parse19
+ * @author      Adam Fairholm
+ * @link        https://github.com/adamfairholm/PyroRoutes
  */ 
 class Routes_m extends MY_Model {
 

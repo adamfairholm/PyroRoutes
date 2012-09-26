@@ -6,8 +6,7 @@
  * Controller for the redirects module
  * 
  * @author 		Adam Fairholm
- * @link		http://.com
- * @package 	https://github.com/parse19/PyroRoutes
+ * @link		https://github.com/adamfairholm/PyroRoutes
  */
 class Admin extends Admin_Controller
 {

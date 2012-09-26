@@ -3,10 +3,8 @@
 /**
  * PyroRoutes Details File
  *
- * @package  	PyroCMS
- * @subpackage  PyroChunks
- * @category  	Details
- * @author  	Parse19 (Adam Fairholm)
+ * @author 		Adam Fairholm
+ * @link		https://github.com/adamfairholm/PyroRoutes
  */ 
 class Module_Routes extends Module {
 
