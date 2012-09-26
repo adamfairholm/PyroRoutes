@@ -10,7 +10,7 @@
  */ 
 class Module_Routes extends Module {
 
-	public $version = '2.0';
+	public $version = '1.2';
 	
 	public $db_pre;
 
