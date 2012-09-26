@@ -1,4 +1,4 @@
-# PyroRoutes 1.1
+# PyroRoutes 1.2
 
 PyroRoutes is a very simple module for PyroCMS that allows you to create and manage custom routes. It does this by directly editing the routes.php file, so there is no database calls checking for routes when you load up a PyroCMS page.
 
@@ -18,9 +18,11 @@ Saving, editing, or deleting a route will sync the routes file. You can also cli
 
 ## Changelog
 
-*2.0 September 26, 2012*
+*1.2 September 26, 2012*
 
-- Updated for PyroCMS 2.1.x
+- Updated for PyroCMS 2.1.4
+- Fixing routes pagination
+- Fixing some PHP 5.4 syntax issues
 
 *1.1 - November 3, 2011*
 
