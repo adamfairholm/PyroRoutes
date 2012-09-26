@@ -42,14 +42,17 @@ class Admin extends Admin_Controller
 	 */
 	public function index()
 	{
+		// Get the limit
+		$offset = $this->uri->segment(4, 0);
+
 		// Get our routes
-		$this->data->routes = $this->routes_m->get_routes('routes');
+		$this->data->routes = $this->routes_m->get_routes(Settings::get('records_per_page'), $offset);
 
 		$this->data->pagination = create_pagination(
-										'admin/routes',
+										'admin/routes/index',
 										$this->db->count_all('routes'),
-										$this->settings->get('records_per_page'),
-										3);
+										Settings::get('records_per_page'),
+										4);
 		
 		$this->template->build('admin/index', $this->data);
 	}
