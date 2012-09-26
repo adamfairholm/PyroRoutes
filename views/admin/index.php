@@ -33,7 +33,7 @@
 <?php echo $pagination['links']; ?>
 
 <?php else: ?>
-	<p><?php echo lang('pyroroutes.no_routes');?></h2></p>
+	<div class="no_data"><?php echo lang('pyroroutes.no_routes');?></div>
 <?php endif;?>
 
 </section>

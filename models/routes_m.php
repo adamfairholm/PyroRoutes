@@ -27,15 +27,13 @@ class Routes_m extends MY_Model {
      * @param	int offset
      * @return	obj
      */
-    public function get_routes($limit = FALSE, $offset = FALSE)
+    public function get_routes($limit = false, $offset = 0)
 	{
-		$this->db->order_by('name', 'asc');
-	
-		//$this->db->limit($limit);
+        $this->db->order_by('name', 'asc');
 
-		$obj = $this->db->get('routes');
-    	
-    	return $obj->result();
+        if ($limit) $this->db->limit($limit, $offset);
+
+        return $this->db->get('routes')->result();
 	}
 
     // --------------------------------------------------------------------------
@@ -49,11 +47,7 @@ class Routes_m extends MY_Model {
      */
     public function get_route($route_id)
 	{
-		$obj = $this->db->limit(1)->where('id', $route_id)->get('routes');
-    	
-    	if($obj->num_rows() == 0) return null;
-    	
-    	return $obj->row();
+		return $this->db->limit(1)->where('id', $route_id)->get('routes')->row();
 	}
 
     // --------------------------------------------------------------------------
@@ -110,8 +104,7 @@ class Routes_m extends MY_Model {
      */
     public function delete_route($route_id)
     {
-    	$this->db->where('id', $route_id);
-    	return $this->db->delete('routes');
+    	return $this->db->where('id', $route_id)->delete('routes');
     }
 
     // --------------------------------------------------------------------------
@@ -133,31 +126,31 @@ class Routes_m extends MY_Model {
 		$info = get_file_info($route_file, 'writable');
 		
 		// Does it even exist? Is it writable?
-		if(!$info or !$info['writable']) return false;
+		if ( ! $info or ! $info['writable']) return false;
 	
 		// Where are we?
-		if(CMS_VERSION >= 1.3):
-		
-			if(is_dir(ADDONPATH.'modules/routes/')):
-			
+		if (CMS_VERSION >= 1.3)
+		{
+			if (is_dir(ADDONPATH.'modules/routes/'))
+			{
 				$path = ADDONPATH.'modules/routes/';
-			
-			elseif(is_dir(SHARED_ADDONPATH.'modules/routes/')):
-			
+			}
+			elseif (is_dir(SHARED_ADDONPATH.'modules/routes/'))
+			{
 				$path = SHARED_ADDONPATH.'modules/routes/';
-				
-			else:
-			
+			}	
+			else
+			{
 				// It isn't anywhere so why bother.
 				return false;
-			
-			endif;
-			
-		else:
+			}
+		}	
+		else
+        {
 			$path = ADDONPATH.'modules/routes/';
-		endif;
+		}
 		
-		if(!is_file($default_route_file = $path.'default_routes.php'));
+		if ( ! is_file($default_route_file = $path.'default_routes.php'));
 	
 		// Let's start our routes file!
 		$file_data = read_file($default_route_file)."\n";
@@ -165,17 +158,15 @@ class Routes_m extends MY_Model {
 		// Get the routes
 		$routes = $this->get_routes();
 				
-		if($routes):
-				
+		if ($routes)
+		{
 			$file_data .= "\n/* Custom Routes from PyroRoutes */\n\n";
 		
-			foreach($routes as $route):
-			
+			foreach ($routes as $route)
+			{
 				$file_data .= "\$route['{$route->route_key}'] = '{$route->route_value}';\n";
-			
-			endforeach;
-		
-		endif;
+			}
+		}
 		
 		$file_data .= "\n".'/* End of file routes.php */';
 		
@@ -186,5 +177,3 @@ class Routes_m extends MY_Model {
 		return write_file($route_file, $file_data, 'r+');
 	}
 }
-
-/* End of file routes_m.php */

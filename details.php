@@ -10,7 +10,7 @@
  */ 
 class Module_Routes extends Module {
 
-	public $version = '1.1';
+	public $version = '2.0';
 	
 	public $db_pre;
 
@@ -18,8 +18,7 @@ class Module_Routes extends Module {
 
 	public function __construct()
 	{	
-		if(CMS_VERSION >= 1.3)
-			$this->db_pre = SITE_REF.'_';
+		if (CMS_VERSION >= 1.3) $this->db_pre = SITE_REF.'_';
 	}
 
 	// --------------------------------------------------------------------------
@@ -38,19 +37,16 @@ class Module_Routes extends Module {
 		    'frontend' => false,
 			'backend' => true,
 			'menu' => 'utilities',
-			'author' => 'Parse19',
+			'author' => 'Adam Fairholm',
 		    'shortcuts' => array(
 				array(
-				    'name' => 'pyroroutes.routes',
-				    'uri' => 'admin/routes',
+					'name' => 'pyroroutes.new_route',
+					'uri' => 'admin/routes/new_route',
+					'class' => 'add'
 				),
 				array(
-				    'name' => 'pyroroutes.new_route',
-				    'uri' => 'admin/routes/new_route',
-				),
-				array(
-				    'name' => 'pyroroutes.sync_routes',
-				    'uri' => 'admin/routes/sync_routes',
+					'name' => 'pyroroutes.sync_routes',
+					'uri' => 'admin/routes/sync_routes',
 				)
 		    )
 		);

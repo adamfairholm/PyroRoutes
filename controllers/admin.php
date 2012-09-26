@@ -5,14 +5,15 @@
  *
  * Controller for the redirects module
  * 
- * @author 		Parse19
- * @link		http://parse19.com
- * @package 	PyroRoutes
- * @category	Modules
+ * @author 		Adam Fairholm
+ * @link		http://.com
+ * @package 	https://github.com/parse19/PyroRoutes
  */
 class Admin extends Admin_Controller
 {
 	public $data;
+
+	// --------------------------------------------------------------------------	
 
 	/**
 	 * Constructor method
@@ -27,6 +28,8 @@ class Admin extends Admin_Controller
 		$this->load->language('pyroroutes');
 		
 		$this->load->model('routes_m');
+
+		$this->data = new stdClass();
 	}
 
 	// --------------------------------------------------------------------------	
@@ -64,34 +67,35 @@ class Admin extends Admin_Controller
 		$this->data->method = 'new';
 		
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules( $this->routes_m->fields );		
+		$this->form_validation->set_rules($this->routes_m->fields);
 
-		foreach($this->routes_m->fields as $field):
-		
+		$this->data->route = new stdClass();
+
+		foreach ($this->routes_m->fields as $field)
+		{
 			$this->data->route->{$field['field']} = $this->input->post($field['field']);
-			
-		endforeach;	
+		}	
 		
-		if($this->form_validation->run() === true):
-		
+		if ($this->form_validation->run() === true)
+		{
 			// Add our route!
-			if(!$this->routes_m->add_route()):
-			
+			if ( ! $this->routes_m->add_route())
+			{
 				$this->session->set_flashdata('error', lang('pyroroutes.add_route_error'));	
-				
-			else:
-			
+			}	
+			else
+			{
 				// Sync since we have a new route
-				if(!$this->routes_m->sync_routes())
+				if ( ! $this->routes_m->sync_routes())
+				{
 					$this->session->set_flashdata('error', lang('pyroroutes.sync_error'));
-			
+				}
+
 				$this->session->set_flashdata('success', lang('pyroroutes.add_route_success'));
-				
-			endif;
+			}	
 		
 			redirect('admin/routes');
-		
-		endif;
+		}
 		
 		$this->template->build('admin/form', $this->data);
 	}
@@ -109,38 +113,38 @@ class Admin extends Admin_Controller
 		// Get the ID of the route
 		$route_id = $this->uri->segment(4);
 		
-		if(!is_numeric($route_id)) show_error("Invalid route ID.");
+		if ( ! is_numeric($route_id)) show_error("Invalid route ID.");
 	
 		$this->data->method = 'edit';
 		
 		// Get the route
 		$this->data->route = $this->routes_m->get_route($route_id);
 		
-		if(is_null($this->data->route)) show_error("Invalid route ID.");
+		if (is_null($this->data->route)) show_error("Invalid route ID.");
 		
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules( $this->routes_m->fields );		
 		
-		if($this->form_validation->run() === true):
-		
+		if ($this->form_validation->run() === true)
+		{
 			// Add our route!
-			if(!$this->routes_m->update_route($route_id)):
-			
+			if ( ! $this->routes_m->update_route($route_id))
+			{
 				$this->session->set_flashdata('error', lang('pyroroutes.edit_route_error'));	
-				
-			else:
-			
+			}	
+			else
+			{
 				// Sync since we have a new route
-				if(!$this->routes_m->sync_routes())
+				if ( ! $this->routes_m->sync_routes())
+				{
 					$this->session->set_flashdata('error', lang('pyroroutes.sync_error'));
-			
+				}
+
 				$this->session->set_flashdata('success', lang('pyroroutes.edit_route_success'));
-				
-			endif;
+			}
 		
 			redirect('admin/routes');
-		
-		endif;
+		}
 		
 		$this->template->build('admin/form', $this->data);
 	}
@@ -158,22 +162,23 @@ class Admin extends Admin_Controller
 		// Get the ID of the route
 		$route_id = $this->uri->segment(4);
 		
-		if(!is_numeric($route_id)) show_error("Invalid route ID.");
+		if ( ! is_numeric($route_id)) show_error("Invalid route ID.");
 	
 		// Delete that route!
-		if(!$this->routes_m->delete_route($route_id)):
-		
+		if ( ! $this->routes_m->delete_route($route_id))
+		{
 			$this->session->set_flashdata('error', lang('pyroroutes.delete_route_error'));	
-			
-		else:
-		
+		}	
+		else
+		{
 			// Sync since we have deleted a route
-			if(!$this->routes_m->sync_routes())
+			if ( ! $this->routes_m->sync_routes())
+			{
 				$this->session->set_flashdata('error', lang('pyroroutes.sync_error'));
-		
+			}
+
 			$this->session->set_flashdata('success', lang('pyroroutes.delete_route_success'));
-			
-		endif;
+		}
 	
 		redirect('admin/routes');
 	}
@@ -188,19 +193,16 @@ class Admin extends Admin_Controller
 	 */
 	public function sync_routes()
 	{
-		if(!$this->routes_m->sync_routes()):
-		
+		if ( ! $this->routes_m->sync_routes())
+		{
 			$this->session->set_flashdata('error', lang('pyroroutes.sync_error'));
-		
-		else:
-		
+		}
+		else
+		{
 			$this->session->set_flashdata('success', lang('pyroroutes.sync_success'));
-		
-		endif;
+		}
 		
 		redirect('admin/routes');
 	}
 
 }
-
-/* End of file admin.php */
