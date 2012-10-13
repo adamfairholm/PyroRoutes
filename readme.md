@@ -4,7 +4,7 @@ PyroRoutes is a very simple module for PyroCMS that allows you to create and man
 
 ## Installation
 
-Drop the pyroroutes folder into the addons/shared\_addons/modules or addons/[site-ref]/modules. Activate via the Add-ons section of the PyroCMS back end.
+If downloading from GitHub, rename the folder to 'routes'. Drop the routes folder into the addons/shared\_addons/modules/ or addons/[site-ref]/modules/. Activate via the Add-ons section of the PyroCMS back end.
 
 Alternatively, you can upload the upload.zip folder using PyroCMS' module upload function.
 
