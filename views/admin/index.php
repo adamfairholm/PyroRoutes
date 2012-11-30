@@ -22,8 +22,8 @@
 			<td><?php echo $route->route_key; ?></td>
 			<td><?php echo $route->route_value; ?></td>
 			<td class="actions"> 
-				<a href="<?php echo site_url('admin/routes/edit_route/'.$route->id);?>" class="button edit">Edit</a>
-				<a href="<?php echo site_url('admin/routes/delete_route/'.$route->id);?>" class="confirm button delete">Delete</a>
+				<a href="<?php echo site_url('admin/routes/edit_route/'.$route->id);?>" class="btn orange edit"><?php echo lang('global:edit'); ?></a>
+				<a href="<?php echo site_url('admin/routes/delete_route/'.$route->id);?>" class="confirm btn red delete"><?php echo lang('global:delete'); ?></a>
 			</td> 
 		</tr>
 	<?php endforeach;?>
