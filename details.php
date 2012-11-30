@@ -26,11 +26,13 @@ class Module_Routes extends Module {
 		return array(
 		    'name' => array(
 		        'en' => 'Routes', 
-		        'fr' => 'Routes'
+		        'fr' => 'Routes',
+		        'it' => 'Routes'
 		    ),
 		    'description' => array(
 		        'en' => 'Manage custom routes.', 
-		        'fr' => 'Gèrez vos routes personnalisées.'
+		        'fr' => 'Gèrez vos routes personnalisées.',
+		        'it' => 'Gestisci i percorsi (routes) personalizzati'
 		    ),
 		    'frontend' => false,
 			'backend' => true,
