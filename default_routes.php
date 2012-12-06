@@ -57,4 +57,8 @@ $route['edit-profile']	                    = 'users/edit';
 
 $route['sitemap.xml']                       = 'sitemap/xml';
 
+/* Custom Routes from PyroRoutes */
+
+/* End of Custom Routes from PyroRoutes */
+
 /* End of file routes.php */
