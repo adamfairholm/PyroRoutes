@@ -151,22 +151,42 @@ class Routes_m extends MY_Model {
 		if ( ! is_file($default_route_file = $path.'default_routes.php'));
 	
 		// Let's start our routes file!
-		$file_data = read_file($default_route_file)."\n";
+		$file_data = read_file($default_route_file);
+    $routes_str = '';
 		
 		// Get the routes
 		$routes = $this->get_routes();
 				
-		if ($routes)
-		{
-			$file_data .= "\n/* Custom Routes from PyroRoutes */\n\n";
+		if($routes):
+				
+			$routes_str .= "\n/* Custom Routes from PyroRoutes */\n\n";
 		
-			foreach ($routes as $route)
-			{
-				$file_data .= "\$route['{$route->route_key}'] = '{$route->route_value}';\n";
-			}
-		}
+			foreach($routes as $route):
+			
+				$routes_str .= "\$route['{$route->route_key}'] = '{$route->route_value}';\n";
+			
+			endforeach;
+      
+      $routes_str .= "\n".'/* End of Custom Routes from PyroRoutes */';
 		
-		$file_data .= "\n".'/* End of file routes.php */';
+		endif;
+    
+    // Write the routes into the file (insert placeholder first, then final routes, to avoid corrupting regex)
+    $findRoutesRegx = '%\/\* Custom Routes from PyroRoutes[\r\n\s\S]*End of Custom Routes from PyroRoutes \*\/%'; // Regx for existing PyroRoutes data
+    $findEOFRegx = '%[\r\n\s]+\/\* End of file routes.php \*\/%'; // Regx for end of file
+    // If existing PyroRoutes info is present, replace it
+    if (preg_match($findRoutesRegx,$file_data) === 1) {
+      $file_data = preg_replace($findRoutesRegx,'## Routes Here ##',$file_data);
+    }
+    // If no existing PyroRoutes is present, insert it before end of file
+    elseif (preg_match($findEOFRegx,$file_data) === 1) {
+      $file_data = preg_replace($findEOFRegx,'## Routes Here ##'."\n".'/* End of file routes.php */',$file_data);
+    }
+    // Just append it
+    else {
+      $file_data .= '## Routes Here ##'."\n".'/* End of file routes.php */';
+    }
+    $file_data = str_replace('## Routes Here ##',$routes_str,$file_data);
 		
 		// Clear the file first
 		file_put_contents($route_file, '');
